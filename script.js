@@ -52,8 +52,8 @@ const Player = (name, symbol) => {
 };
 
 const displayController = (() => {
-  const player1 = Player("Ananda", "X");
-  const player2 = Player("Wiradharma", "O");
+  let player1 = Player("Ananda", "X");
+  let player2 = Player("Wiradharma", "O");
   let currentPlayerIndex = true;
 
   const switchPlayer = () => {
@@ -74,7 +74,29 @@ const displayController = (() => {
       switchPlayer();
     }
   };
-  return { markCell };
+
+  const startGame = () => {
+    const input1 = document.getElementById("txtPlayer1");
+    const input2 = document.getElementById("txtPlayer2");
+
+    const name1 =
+      input1.getAttribute("value") != ""
+        ? input1.getAttribute("value")
+        : input1.getAttribute("placeholder");
+
+    const name2 =
+      input2.getAttribute("value") != ""
+        ? input2.getAttribute("value")
+        : input2.getAttribute("placeholder");
+
+    player1 = Player(name1, "X");
+    player2 = Player(name2, "O");
+    currentPlayerIndex = true;
+    document.getElementById("menu").classList.add("hidden");
+    document.getElementById("game").classList.remove("hidden");
+    console.log("Game Started");
+  };
+  return { markCell, startGame };
 })();
 
 with (Array.from(document.getElementsByClassName("cell"))) {

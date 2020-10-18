@@ -1,17 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Chilanka&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chilanka&family=Permanent+Marker&family=Bungee&display=swap");
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-#game {
-  width: 70%;
-}
-
-#info {
-  width: 30%;
 }
 
 h1 {
@@ -22,7 +14,7 @@ h1 {
 }
 
 #gameboard {
-  background-color: gray;
+  background-color: #d5f9e1;
   margin: 0px auto;
   width: 450px;
   height: 450px;
@@ -38,4 +30,34 @@ h1 {
   font-size: 120px;
   text-align: center;
   line-height: 180px;
+}
+
+#menu {
+  text-align: center;
+}
+
+.inputPlayer {
+  text-align: center;
+  width: 200px;
+  padding: 5px;
+  margin: 30px 10px 0px 10px;
+  border: 5px solid black;
+  font-family: "Bungee", cursive;
+  font-size: 30px;
+}
+
+#btnStart {
+  background-color: rgb(76, 208, 76);
+  color: white;
+  margin-top: 30px;
+  width: 140px;
+  padding: 5px;
+  border: 5px solid #2c6f34;
+  font-family: "Bungee", cursive;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
