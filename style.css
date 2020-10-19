@@ -14,12 +14,16 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+body {
+  background-color: #dbdbdb;
+}
+
 h1 {
   text-align: center;
   font-size: 80px;
   padding: 10px;
   margin-top: 20px;
-  color: #db0b0b;
+  color: #0034ff;
 }
 
 #gameboard {
@@ -54,9 +58,9 @@ h1 {
   width: 200px;
   padding: 5px;
   margin: 30px 10px 0px 10px;
-  border: 5px solid #cc9c2a;
+  border: 5px solid #229cb0;
   font-size: 30px;
-  color: #cc9c2a;
+  color: #229cb0;
 }
 
 #btnStart {
@@ -73,12 +77,13 @@ h1 {
 #winnerDisplay {
   width: 350px;
   text-align: center;
-  border: 10px solid #1c43dd;
+  border: 10px solid #e10000;
   margin: 50px auto;
   font-size: 50px;
-  color: #1c43dd;
+  color: #e10000;
   padding: 10px;
-  box-shadow: 10px 10px #0d1d59;
+  box-shadow: 10px 10px #860000;
+  background-color: white;
 }
 
 .hidden {
