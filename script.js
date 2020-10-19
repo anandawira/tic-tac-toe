@@ -161,3 +161,13 @@ with (Array.from(document.getElementsByClassName("cell"))) {
   });
 }
 //
+
+with (Array.from(document.getElementsByClassName("inputPlayer"))) {
+  forEach((input) => {
+    input.addEventListener("keyup", (event) => {
+      if (event.keyCode == 13) {
+        document.getElementById("btnStart").click();
+      }
+    });
+  });
+}
