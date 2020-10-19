@@ -10,12 +10,23 @@ const gameBoard = (() => {
     if (board[cell] == "") {
       board[cell] = symbol;
       renderBoard();
-      console.log(checkWinner());
       return true;
     } else {
       console.log("Cell is already marked");
       return false;
     }
+  };
+
+  const checkTie = () => {
+    const cells = Array.from(document.getElementsByClassName("cell"));
+    let tie = true;
+    for (let cell of cells) {
+      if (cell.innerText == "") {
+        tie = false;
+        break;
+      }
+    }
+    return tie;
   };
 
   const winningCombinations = [
@@ -30,7 +41,7 @@ const gameBoard = (() => {
   ];
 
   const checkWinner = () => {
-    let winner = "";
+    winner = undefined;
     winningCombinations.forEach((combination) => {
       const a = board[combination[0]];
       const b = board[combination[1]];
@@ -39,10 +50,18 @@ const gameBoard = (() => {
         winner = a;
       }
     });
+    if (checkTie()) {
+      winner = "tie";
+    }
     return winner;
   };
 
-  return { renderBoard, markSymbol, checkWinner };
+  const resetBoard = () => {
+    board = Array(9).fill("");
+    renderBoard();
+  };
+
+  return { renderBoard, markSymbol, checkWinner, resetBoard, checkTie };
 })();
 
 const Player = (name, symbol) => {
@@ -72,6 +91,23 @@ const displayController = (() => {
     const success = gameBoard.markSymbol(cell, getCurrentPlayer().getSymbol());
     if (success) {
       switchPlayer();
+      if (gameBoard.checkWinner()) {
+        let winText = "";
+        if (gameBoard.checkWinner() == "X") {
+          winText = `${player1.getName()}<br>WIN !!!`;
+        } else if (gameBoard.checkWinner() == "O") {
+          winText = `${player2.getName()}<br>WIN !!!`;
+        } else if (gameBoard.checkWinner() == "tie") {
+          winText = `TIE !!!`;
+        }
+
+        document.getElementById("game").classList.add("hidden");
+        with (document.getElementById("winnerDisplay")) {
+          innerHTML = winText;
+          classList.remove("hidden");
+        }
+        document.getElementById("menu").classList.remove("hidden");
+      }
     }
   };
 
@@ -79,18 +115,12 @@ const displayController = (() => {
     const input1 = document.getElementById("txtPlayer1");
     const input2 = document.getElementById("txtPlayer2");
 
-    const name1 =
-      input1.getAttribute("value") != ""
-        ? input1.getAttribute("value")
-        : input1.getAttribute("placeholder");
+    const name1 = input1.value || input1.getAttribute("placeholder");
+    const name2 = input2.value || input2.getAttribute("placeholder");
 
-    const name2 =
-      input2.getAttribute("value") != ""
-        ? input2.getAttribute("value")
-        : input2.getAttribute("placeholder");
-
-    player1 = Player(name1, "X");
-    player2 = Player(name2, "O");
+    player1 = Player(name1.toUpperCase(), "X");
+    player2 = Player(name2.toUpperCase(), "O");
+    gameBoard.resetBoard();
     currentPlayerIndex = true;
     document.getElementById("menu").classList.add("hidden");
     document.getElementById("game").classList.remove("hidden");

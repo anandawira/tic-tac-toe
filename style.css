@@ -1,19 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Chilanka&family=Permanent+Marker&family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chilanka&family=Bungee&display=swap");
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: "Bungee", cursive;
 }
 
 h1 {
   text-align: center;
   font-size: 80px;
-  font-family: "Permanent Marker", cursive;
   padding: 10px;
+  margin-top: 20px;
+  color: #db0b0b;
 }
 
 #gameboard {
+  box-sizing: content-box;
   background-color: #d5f9e1;
   margin: 0px auto;
   width: 450px;
@@ -21,15 +24,18 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
-  border: 3px solid black;
+  border: 5px solid black;
+  border-radius: 10px;
 }
 
 .cell {
-  border: 3px solid black;
-  font-family: "Chilanka", cursive;
+  border: 5px solid black;
   font-size: 120px;
   text-align: center;
   line-height: 180px;
+  cursor: pointer;
+  font-family: "Chilanka", cursive;
+  font-weight: 900;
 }
 
 #menu {
@@ -41,9 +47,9 @@ h1 {
   width: 200px;
   padding: 5px;
   margin: 30px 10px 0px 10px;
-  border: 5px solid black;
-  font-family: "Bungee", cursive;
+  border: 5px solid #cc9c2a;
   font-size: 30px;
+  color: #cc9c2a;
 }
 
 #btnStart {
@@ -53,9 +59,18 @@ h1 {
   width: 140px;
   padding: 5px;
   border: 5px solid #2c6f34;
-  font-family: "Bungee", cursive;
   font-size: 30px;
   cursor: pointer;
+}
+
+#winnerDisplay {
+  width: 350px;
+  text-align: center;
+  border: 10px solid #1c43dd;
+  margin: 50px auto;
+  font-size: 50px;
+  color: #1c43dd;
+  padding: 10px;
 }
 
 .hidden {
